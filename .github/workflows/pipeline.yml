@@ -7,14 +7,16 @@ jobs:
     outputs:
       build_id: ${{ steps.set_var.outputs.build_id }}
     steps:
+      - uses: actions/checkout@v3
       - name: Set Var
         id: set_var
-        run: echo "::set-output name=build_id::$BUILD_ID"
+        run: echo "::set-output name=build_id::12345"
 
   cd:
     runs-on: ubuntu-latest
     needs: ci
     steps:
+      - uses: actions/checkout@v3
       - name: Use Var
-        id: user_var
-        run: echo ${{ needs.ci.outputs.build_id  }}
+        id: use_var
+        run: echo ${{ needs.ci.outputs.build_id }}
