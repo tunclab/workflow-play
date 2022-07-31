@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Set Var
         id: set_var
-        run: echo "::set-output name=build_id::12345"
+        run: echo "::set-output name=build_id::$BUILD_ID"
 
   cd:
     runs-on: ubuntu-latest
