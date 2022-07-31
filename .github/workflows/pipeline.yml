@@ -1,0 +1,20 @@
+name: Build and deploy
+on: push
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    outputs:
+      build_id: ${{ steps.set_var.outputs.build_id }}
+    steps:
+      - name: Set Var
+        id: set_var
+        run: echo "::set-output name=build_id::$BUILD_ID"
+
+  cd:
+    runs-on: ubuntu-latest
+    needs: ci
+    steps:
+      - name: Use Var
+        id: user_var
+        run: echo ${{ needs.ci.outputs.build_id  }}
