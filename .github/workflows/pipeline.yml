@@ -8,8 +8,10 @@ jobs:
       build_id: ${{ steps.set_var.outputs.build_id }}
     steps:
       - name: Set Var
+        env:
+          IMAGE: some-image:v1
         id: set_var
-        run: echo "::set-output name=build_id::1234"
+        run: echo "::set-output name=build_id::$IMAGE"
 
   cd:
     runs-on: ubuntu-latest
