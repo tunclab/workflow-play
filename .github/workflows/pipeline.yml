@@ -16,7 +16,7 @@ jobs:
         run: | 
           echo "setting var"
           echo "::set-output name=registry::$ECR_REGISTRY"
-          echo "::set-output name=repo::$ECR_REPOSITORY
+          echo "::set-output name=repo::$ECR_REPOSITORY"
           echo "::set-output name=image_tag::$IMAGE_TAG"
 
   cd:
