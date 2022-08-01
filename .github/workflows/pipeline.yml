@@ -28,6 +28,4 @@ jobs:
       - name: Use Var
         id: use_var
         run: |
-          echo ${{ needs.ci.outputs.registry }}
-          echo ${{ needs.ci.outputs.repo }}
-          echo ${{ needs.ci.outputs.image_tag }}
+          echo ${{ needs.ci.outputs.registry }}/${{ needs.ci.outputs.repo }}:${{ needs.ci.outputs.image_tag }}
