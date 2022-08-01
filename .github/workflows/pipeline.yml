@@ -9,9 +9,13 @@ jobs:
     steps:
       - name: Set Var
         env:
-          IMAGE: some-image:v1
+          ECR_REGISTRY: registry
+          ECR_REPOSITORY: repo
+          IMAGE_TAG: v1
         id: set_var
-        run: echo "::set-output name=build_id::$IMAGE"
+        run: | 
+          echo "setting var"
+          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
   cd:
     runs-on: ubuntu-latest
@@ -19,4 +23,4 @@ jobs:
     steps:
       - name: Use Var
         id: use_var
-        run: echo ${{ needs.ci.outputs.build_id }}
+        run: echo ${{ needs.ci.outputs.image }}
