@@ -5,7 +5,9 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     outputs:
-      build_id: ${{ steps.set_var.outputs.build_id }}
+      registry: ${{ steps.set_var.outputs.registry }}
+      repo: ${{ steps.set_var.outputs.repo }}
+      image_tag: ${{ steps.set_var.outputs.image_tag }}
     steps:
       - name: Set Var
         env:
